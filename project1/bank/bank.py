@@ -1,9 +1,12 @@
 def main(): 
 
     response = input("Greeting: ")
-    if response == "hello":
+
+
+    if "hello" in response.lower().strip():
         print("$0")
-    elif response == "h"
+    
+    elif "h" in response[0].lower().strip():
         print("$20")
     else:
       print("$100")    
