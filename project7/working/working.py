@@ -1,19 +1,26 @@
 import re
 
+
 def main():
     print(convert(input("Hours: ")))
 
+
 def convert(s):
-    isFormatCorrect = re.search(r"^(\d{1,2}):?(\d{2})? (AM|PM)  to  (\d{1,2}):?(\d{2})? (AM|PM)$", s)
+    isFormatCorrect = re.search(
+        r"^(([0-9][0-2]*):*([0-5][0-9])*) ([A-P]M) to (([0-9][0-2]*):*([0-5][0-9])*) ([A-P]M)$",
+        s,
+    )
+
     if isFormatCorrect:
         pieces = isFormatCorrect.groups()
-        if int(pieces[0]) > 12 or int(pieces[3]) > 12:
+        if int(pieces[1]) > 12 or int(pieces[5]) > 12:
             raise ValueError
         first_time = new_format(pieces[1], pieces[2], pieces[3])
         second_time = new_format(pieces[5], pieces[6], pieces[7])
-        return first_time + "to" + second_time
+        return first_time + " to " + second_time
     else:
         raise ValueError
+
 
 def new_format(hour, minute, am_pm):
     if am_pm == "PM":
@@ -23,9 +30,10 @@ def new_format(hour, minute, am_pm):
             new_hour = int(hour) + 12
     else:
         if int(hour) == 12:
-            hour = 0
+            new_hour = 0
         else:
-            hour = int(hour)
+            new_hour = int(hour)
+    
     if minute == None:
         new_minute = ":00"
         new_time = f"{new_hour:02}" + new_minute
@@ -34,5 +42,6 @@ def new_format(hour, minute, am_pm):
 
     return new_time
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
