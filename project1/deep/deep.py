@@ -4,10 +4,10 @@ def main():
     )
     if response.strip().lower() == "forty-two" or response.strip().lower() == "forty two" or response.strip().lower()  == "42":
         print("Yes")
-    elif response.lower().strip()  == "forty-two":
-        print("Yes") 
-    elif response.lower().strip()   == "forty two":
-        print("Yes")
+    # elif response.lower().strip()  == "forty-two":
+    #     print("Yes") 
+    # elif response.lower().strip()   == "forty two":
+    #     print("Yes")
 
     else:
         print("No")
